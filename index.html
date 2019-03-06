@@ -29,6 +29,62 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
         
+        /*
+            Selection Methods:
+            d3.select - single element
+            d3.selectAll - multiple elements
+            both accept a valid CSS selector
+        */
+
+        /*
+            play around D3 with selection methods
+        */
+
+        d3.select("#page-title"); // _groups와 _parents가 있는 object를 return
+        d3.selectAll("li");       // 위와 동일
+
+        d3.select("#page-title").nodes(); // .nodes()가 매치되는 html 요소들을 배열로 리턴
+        d3.selectAll("li").nodes();
+        d3.selectAll("li").node(); // node() 메소드는 매치되는 html 요소들 중 첫번째 요소를 리턴 하지만 보통 D3 사용하면서 selection메소드로 주로 접근함
+
+        d3.select("#page-title")
+          .style("background-color", "red") // 이런식으로 DOM 요소를 선택하여 스타일을 바굴 수 있고 여러 개의 메소드를 chaining하여 할 수 있음
+          .style("font-size", "30px")
+          .text("D3 is amazing!!")
+
+        /*
+            Manipulating Selections
+            style, attr, text, and html methods
+
+            위에 있는 메소드 말고도 다른 메소드들도 newValue가 전달되지 않으면 getter로 쓸 수 있음
+            selection.style(property [,newValue]);
+            selection.attr(attribute, [, newValue]);
+            selection.text([newValue]);
+
+            classed method
+
+            selection.classed(classList [,shouldClassesBeSet]);  classList는 띄어쓰기로 분리된 리스트임
+                                           shouldClassesBeSet은 클래스(들)이 추가 or 제거되어야하는지 체크함
+
+        */
+        
+        //d3.select("#page-title")
+         // .style("background-color", "yellowgreen")
+         // .style("color", "white")
+         // .attr("class", "new-class")
+
+          d3.select("#page-title")
+          .style("background-color", "yellowgreen")
+          .style("color", "white")
+          .classed(" active",true)  
+
+          
+        //d3.select("#page-title")
+         // .text(); // 이렇게 하면 선택한 요소의 텍스트를 가져옴
+
+        //d3.select("li").style("color"); // 선택한 요소의 폰트 칼라를 가져옴
+
+
     </script>
 </body>
 </html>
