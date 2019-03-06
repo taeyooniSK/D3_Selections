@@ -84,6 +84,23 @@
 
         //d3.select("li").style("color"); // 선택한 요소의 폰트 칼라를 가져옴
 
+        /*
+          Selections and Callbacks
+        */
+
+        d3.selectAll("li")
+          .style("background-color", (_, idx) => {   // idx는 index
+	         return idx % 2 === 0 ? "lightblue" : "white"
+        })
+
+        d3.select(".outer")          // select하는 요소는 인덴테이션을 2칸, styledms 4칸으로 주면 it's more readable
+	        .style("color", "beige")
+          .select("div")                      // class가 outer인 div안에 div를 선택
+	        .style("font-size", "30px")
+	        .style("background-color", "green")
+          .select("div")                     // 위에서 선택한 div안의 div를 선택
+	        .style("border", "8px solid blue");
+
 
     </script>
 </body>
